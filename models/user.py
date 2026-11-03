@@ -1,23 +1,27 @@
 from Db import Db
 
+
 class User(Db):
 
-    #geter -> metoda koja vraca podatak
-    def get_name(self):
-        return self.__name
-
-    #seter -> metoda koja setuje/dodeljuje vrednos atrubutu klase
-    def set_name(self,name):
-        if len(name)<3:
-            raise ValueError("Name is too short")
-
+    def __init__(self, name, age):
+        super().__init__()
         self.__name = name
-
-    def get_age(self,age):
-        return age
-    def set_age(self,age):
-        if age<18:
-            raise ValueError("Age is under 18")
         self.__age = age
 
+    # geter -> metoda koja vraca podatak
+    @property
+    def name(self):
+        return self.__name
 
+    # seter -> metoda koja setuje/dodeljuje vrednos atrubutu klase
+    @name.setter
+    def name(self, name):
+        self.__name = name
+
+    @property
+    def age(self, age):
+        return age
+
+    @age.setter
+    def age(self, age):
+        self.__age = age

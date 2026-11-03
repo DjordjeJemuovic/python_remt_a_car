@@ -1,9 +1,7 @@
-
 class Car:
-
     CARS = {
-        "Audi":[
-            {"model":"A3","year":2004}
+        "Audi": [
+            {"model": "A3", "year": 2004}
         ],
         "BMW": [
             {"model": "3 Series", "year": 1998},
@@ -19,9 +17,7 @@ class Car:
             {"model": "Golf", "year": 1999},
             {"model": "Passat", "year": 2005},
             {"model": "Tiguan", "year": 2012}
-]
-
-
+        ]
 
     }
 
@@ -30,12 +26,12 @@ class Car:
         self.__model = None
         self.__year = None
 
-
     @property
     def model(self):
-       return self.__model
+        return self.__model
+
     @model.setter
-    def model(self,model):
+    def model(self, model):
         if self.__brend is None:
             raise ValueError("brend mast be set")
         valid_models = []
@@ -43,30 +39,30 @@ class Car:
             valid_models.append(car["model"])
 
         if model not in valid_models:
-             raise ValueError("Invalid model")
-
+            raise ValueError("Invalid model")
 
         self.__model = model
 
         for car_model in Car.CARS[self.__brend]:
             if car_model['model'] == model:
-               self.__year = car_model["year"]
+                self.__year = car_model["year"]
 
     @property
     def brend(self):
         return self.__brend
 
     @brend.setter
-    def brend(self,brend):
+    def brend(self, brend):
         if brend not in Car.CARS:
             raise ValueError("Invalid Brend")
         self.__brend = brend
+
     @property
     def year(self):
         return self.__year
 
     @year.setter
-    def year(self,year):
+    def year(self, year):
         if self.__model is None:
             raise ValueError("Year not set")
 
@@ -74,6 +70,7 @@ class Car:
             raise ValueError("Production year cennot be set")
 
         self.__year = year
+
 
 audi = Car()
 
